@@ -1,6 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const Chat =  require('../models/chatModel'); // Although folder is named as "model" but , "Model" also works
-const User = require("../Models/userModel"); // But here only "Model" works, even if the folder name is "model"
+const User = require("../models/userModel"); // But here only "Model" works, even if the folder name is "model"
 
 
 // Access Chat
