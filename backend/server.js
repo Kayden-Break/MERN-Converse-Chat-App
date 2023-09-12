@@ -82,8 +82,10 @@ const io = require('socket.io')(server, {
             // You can dynamically determine the allowed origin here based on the request's origin.
             // For example, you can check if the request's origin matches a specific pattern.
             if (origin && origin.startsWith('https://converse-')) {
+                console.log('Allowed by CORS');
                 callback(null, true); // Allow the request
             } else {
+                console.log('Blocked by CORS');
                 callback(new Error('Not allowed by CORS')); // Block the request for other origins
             }
         },
