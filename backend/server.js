@@ -68,29 +68,34 @@ const PORT =  process.env.PORT || 5000;
 
 const server = app.listen(PORT, console.log(`Server Started on PORT ${PORT}`.yellow.bold));
 
-// const io = require('socket.io')(server, {
-//     pingTimeout : 60000,
-//     cors : {
-//         origin : "http://localhost:3000",
-//     },
-// });
-
 const io = require('socket.io')(server, {
-    pingTimeout: 60000,
-    cors: {
-        origin: (origin, callback) => {
-            // You can dynamically determine the allowed origin here based on the request's origin.
-            // For example, you can check if the request's origin matches a specific pattern.
-            if (origin && origin.startsWith('https://converse-')) {
-                console.log('Allowed by CORS');
-                callback(null, true); // Allow the request
-            } else {
-                console.log('Blocked by CORS');
-                callback(new Error('Not allowed by CORS')); // Block the request for other origins
-            }
-        },
+    pingTimeout : 60000,
+    cors : {
+        // origin : "http://localhost:3000",
+        origin : "https://converse-yqa9.onrender.com",
+        
     },
 });
+
+
+
+/////// #######TRIEd and FAILED approach
+// const io = require('socket.io')(server, {
+//     pingTimeout: 60000,
+//     cors: {
+//         origin: (origin, callback) => {
+//             // You can dynamically determine the allowed origin here based on the request's origin.
+//             // For example, you can check if the request's origin matches a specific pattern.
+//             if (origin && origin.startsWith('https://converse-')) {
+//                 console.log('Allowed by CORS');
+//                 callback(null, true); // Allow the request
+//             } else {
+//                 console.log('Blocked by CORS');
+//                 callback(new Error('Not allowed by CORS')); // Block the request for other origins
+//             }
+//         },
+//     },
+// });
 
 
 
