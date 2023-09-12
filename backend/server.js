@@ -68,12 +68,30 @@ const PORT =  process.env.PORT || 5000;
 
 const server = app.listen(PORT, console.log(`Server Started on PORT ${PORT}`.yellow.bold));
 
+// const io = require('socket.io')(server, {
+//     pingTimeout : 60000,
+//     cors : {
+//         origin : "http://localhost:3000",
+//     },
+// });
+
 const io = require('socket.io')(server, {
-    pingTimeout : 60000,
-    cors : {
-        origin : "http://localhost:3000",
+    pingTimeout: 60000,
+    cors: {
+        origin: (origin, callback) => {
+            // You can dynamically determine the allowed origin here based on the request's origin.
+            // For example, you can check if the request's origin matches a specific pattern.
+            if (origin && origin.startsWith('https://converse-')) {
+                callback(null, true); // Allow the request
+            } else {
+                callback(new Error('Not allowed by CORS')); // Block the request for other origins
+            }
+        },
     },
 });
+
+
+
 
 io.on("connection", (socket) => {
     console.log("connected to socket.io");
