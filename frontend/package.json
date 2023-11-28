@@ -22,6 +22,9 @@
     "socket.io-client": "^4.7.2",
     "web-vitals": "^2.1.4"
   },
+
+  "homepage": "https://github.com/Kayden-Break/MERN-Converse-Chat-App",
+  
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
